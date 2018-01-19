@@ -6,6 +6,20 @@ export function listContents(req, res) {
 }
 
 export function findOne(req, res) {
+  console.log(req.params.id);
+  console.log(req.body.name);
+  var a = 0;
+  for(var i = 0; i < users.length; i++){
+    if(req.params.id == users[i].id){
+      res.send(users[i]);
+      a = 1;
+    }
+    if(a == 0) {
+      res.status(404);//Set status to 404 as movie was not found
+      res.json({message: 'Not Found'});
+    }
+  }
+  /*
   var currUser = users.filter(function(user) {
     if(user.id == req.params.id) {
       return true;
@@ -17,6 +31,7 @@ export function findOne(req, res) {
     res.status(404);//Set status to 404 as movie was not found
     res.json({message: 'Not Found'});
   }
+  */
 }
 
 export function createUser(req, res) {
