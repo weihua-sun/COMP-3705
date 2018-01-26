@@ -1,8 +1,10 @@
 import express from 'express';
-import * as users from './users';
+import * as controller from './users.controller';
 
 let router = express.Router();
 export {router};
-router.get('/', users.listContents);
-router.get('/:id', users.findOne);
-router.post('/', users.createUser);
+router.get('/', controller.index);
+router.get('/:id', controller.show);
+router.post('/', controller.create);
+router.put('/:id', controller.upsert);
+router.delete('/:id', controller.destroy);
