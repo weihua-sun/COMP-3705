@@ -43,6 +43,8 @@ class User {
     // Find user and update
     // If user does not exist, create it using Id provided
     // Return true if user was updated, false if user was created
+    //let existinguser = thia.findUser(user.id);
+    //
     var updateIndex = this.users.map(function(U) {
       return U.id;
     }).indexOf((user.id));
