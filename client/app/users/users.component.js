@@ -6,9 +6,21 @@ import {UserService} from '../main/main.component';
 export class UsersController {
 
   /*@ngInject*/
-  constructor($routeParams, User) {
+  constructor($routeParams, $http, User) {
     this.$routParams = $routeParams;
+    this.$http = $http;
     this.User = User;
+    this.getUserData();
+  }
+
+  getUserData() {
+    this.User.getAllUsers()
+      .then(response => {
+        this.users = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   $onInit() {

@@ -23,7 +23,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="user in usersController.users">
-          <td><a ng-href="/users/{{user._id}}">{{user._id}}</a></td>
+          <td>{{usersController.id}}</td>
           <td>{{user.age}}</td>
           <td>{{user.name.firstName}}</td>
           <td>{{user.name.middleName}}</td>
