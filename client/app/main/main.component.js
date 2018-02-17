@@ -33,15 +33,19 @@ export function UserService($http) {
   var User = {
     getAllUsers() {
       return $http.get('/api/users/');
+    },
+
+    getUserById(userId) {
+      return $http.get('/api/users/' + userId);
     }
-  }
+  };
   return User;
 }
 
 export function SquareFilter() {
   var squareFunction = function(value) {
     return value * value;
-  }
+  };
   return squareFunction;
 }
 
