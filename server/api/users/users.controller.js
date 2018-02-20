@@ -18,9 +18,9 @@ export function index(req, res) {
        the two tables for you
        http://mongoosejs.com/docs/populate.html
     */
-    .populate('address')
-    /*
-       exec() runs the query and returns a promise object.
+   .populate('address')
+
+     /*  exec() runs the query and returns a promise object.
        Promises are a cleaner way to chain asynchronous actions together than
        callbacks because, instead of nesting functions within functions, you can
        chain function calls together and pass the return value from one function
@@ -29,11 +29,14 @@ export function index(req, res) {
        http://www.javascriptkit.com/javatutors/javascriptpromises.shtml
        http://bluebirdjs.com/docs/why-promises.html
     */
+
     .exec()
+
     // This then method will only be called if the query was successful, so no need to error check!
     .then(function(users) {
       res.json(users);
     })
+
     /*
      Any errors encountered here must be server side, since there are no arguments to the find
      Return 500 (server error) and send the error encountered back to the requester

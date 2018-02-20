@@ -1,5 +1,5 @@
 import express from 'express';
-import * as controller from './users.controller';
+import * as controller from './projec1/recipe/recipe.controller';
 
 let router = express.Router();
 
@@ -9,6 +9,7 @@ router.get('/:id', controller.show);
 
 // POST method
 router.post('/', controller.create);
+router.post('/:id/Reviews/:id', controller.create);
 
 // PUT method
 router.put('/:id', controller.update);
