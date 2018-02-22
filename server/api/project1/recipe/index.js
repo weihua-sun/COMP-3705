@@ -9,7 +9,7 @@ router.get('/:id', controller.show);
 
 // POST method
 router.post('/', controller.create);
-router.post('/:id/Reviews/:id', controller.create);
+router.post('/:id/Reviews/', controller.create);
 
 // PUT method
 router.put('/:id', controller.update);
