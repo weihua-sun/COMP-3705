@@ -1,45 +1,59 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Lab 12: AngularJS Routing</h1>
-      <input ng-model="mainController.input" />
-      <h1>You entered: {{ mainController.input }}</h1>
-      <ul>
-        <li ng-repeat="value in mainController.values">{{ value }}</li>
-        <hr size="5">
-        <h1>{{ mainController.valueToSquare }} * {{ mainController.valueToSquare }} = {{mainController.valueToSquare | Square }}</h1>
-        <hr size="5">
-        <table class="table">
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>Age</th>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Last Name</th>
-            <th>Address Line 1</th>
-            <th>Address Line 2</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="user in mainController.users">
-            <td><a ng-href="/users/{{user._id}}">{{user._id}}</a></td>
-            <td>{{user.age}}</td>
-            <td>{{user.name.firstName}}</td>
-            <td>{{user.name.middleName}}</td>
-            <td>{{user.name.lastName}}</td>
-            <td>{{user.address.addressLine1}}</td>
-            <td>{{user.address.addressLine2}}</td>
-            <td>{{user.address.city}}</td>
-            <td>{{user.address.state}}</td>
-            <td>{{user.address.zip}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </ul>
+      <h1 class="page-header">Lab 14: AngularUI Bootstrap Components</h1>
     </div>
   </div>
+
+  <input ng-model="mainController.input" />
+  <h1>You entered: {{ mainController.input }}</h1>
+
+  <ul>
+    <li ng-repeat="value in mainController.values">{{ value }}</li>
+  </ul>
+
+  <hr size="5">
+  <h1>{{ mainController.valueToSquare }} * {{ mainController.valueToSquare }} =
+    {{mainController.valueToSquare | Square }}</h1>
+  <h4>Default</h4>
+  <span uib-rating ng-model="rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+  <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+
+  <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+
+  <button type="button" class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
+  <button type="button" class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
+  <hr />
+  <hr size="5">
+  <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create new User</button>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Age</th>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last Name</th>
+      <th>Address Line 1</th>
+      <th>Address Line 2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in mainController.users">
+      <td><button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button></td>
+      <td>{{user.age}}</td>
+      <td>{{user.name.firstName}}</td>
+      <td>{{user.name.middleName}}</td>
+      <td>{{user.name.lastName}}</td>
+      <td>{{user.address.addressLine1}}</td>
+      <td>{{user.address.addressLine2}}</td>
+      <td>{{user.address.city}}</td>
+      <td>{{user.address.state}}</td>
+      <td>{{user.address.zip}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
