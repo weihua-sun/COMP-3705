@@ -7,7 +7,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/comp3705-weihua'
+    uri: 'mongodb://localhost/comp3705-dev-weihua-auth'
   },
 
   // Seed database on startup

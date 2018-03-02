@@ -4,13 +4,11 @@ import routing from './main.routes';
 
 export class MainController {
   /*@ngInject*/
-  constructor($http, $uibModal, User, $scope) {
+  constructor($http, $uibModal, User) {
     this.$http = $http;
     this.User = User;
     this.$uibModal = $uibModal;
     this.setData();
-    this.getUserData();
-    this.rating($scope);
   }
 
   setData() {
@@ -18,51 +16,24 @@ export class MainController {
     this.valueToSquare = 4;
   }
 
-  getUserData() {
-    this.User.getAllUsers()
-      .then(response => {
-        this.users = response;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
-
-  updateUser(user) {
-    this.$uibModal.open({
-      template: require('../../components/updateUserModal/updateUserModal.html'),
-      controller: 'updateUserController as updateUserController',
-      resolve: {
-        user: () => user
-      }
-    });
-  }
-
-  rating($scope) {
-    $scope.rate = 7;
-    $scope.max = 10;
-    $scope.isReadonly = false;
-
-    $scope.hoveringOver = function(value) {
-      $scope.overStar = value;
-      $scope.percent = 100 * (value / $scope.max);
-    };
+  $onInit() {
   }
 }
 
 export function SquareFilter() {
   var squareFunction = function(value) {
     return value * value;
-  }
+  };
+
   return squareFunction;
 }
 
 export default angular.module('comp3705App.main', [ngRoute])
   .config(routing)
+  .filter('Square', SquareFilter)
   .component('main', {
     template: require('./main.html'),
     controller: MainController,
     controllerAs: 'mainController'
   })
-  .filter('Square', SquareFilter)
   .name;

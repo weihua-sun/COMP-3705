@@ -20,5 +20,6 @@ export function UserService($resource) {
       return $resource('/api/users').save(user).$promise;
     }
   };
+
   return User;
 }

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Lab 15: Bootstrap CSS</h1>
+      <h1 class="page-header">Lab 16: Authentication using JWT and OAuth</h1>
     </div>
   </div>
 
@@ -12,61 +12,7 @@
     <li ng-repeat="value in mainController.values">{{ value }}</li>
   </ul>
 
-
   <hr size="5">
   <h1>{{ mainController.valueToSquare }} * {{ mainController.valueToSquare }} =
     {{mainController.valueToSquare | Square }}</h1>
-  <h4>Default</h4>
-  <span uib-rating ng-model="rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
-  <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
-
-  <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
-
-  <button type="button" class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
-  <button type="button" class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
-  <hr />
-  <hr size="5">
-  <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create new User</button>
-  <table class="table table-responsive table-striped table-bordered">
-    <thead>
-    <tr>
-      <th class=col-md-2>Id</th>
-      <th class=col-md-1>Age</th>
-      <th class=col-md-1>First Name</th>
-      <th class=col-md-1>Middle Name</th>
-      <th class=col-md-1>Last Name</th>
-      <th class="hidden-xs col-sm-5 col=md-2">Address Line 1</th>
-      <th class="hidden-xs col-sm-5 col=md-1">Address Line 2</th>
-      <th class="hidden-xs col-sm-5 col=md-1">City</th>
-      <th class="hidden-xs col-sm-5 col=md-1">State</th>
-      <th class="hidden-xs col-sm-5 col=md-1">Zip</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="user in mainController.users">
-      <td class=col-md-2><button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button></td>
-      <td class=col-md-1>{{user.age}}</td>
-      <td class=col-md-1>{{user.name.firstName}}</td>
-      <td class=col-md-1>{{user.name.middleName}}</td>
-      <td class=col-md-1>{{user.name.lastName}}</td>
-      <td class="hidden-xs col-sm-5 col=md-2">{{user.address.addressLine1}}</td>
-      <td class="hidden-xs col-sm-5 col=md-1">{{user.address.addressLine2}}</td>
-      <td class="hidden-xs col-sm-5 col=md-1">{{user.address.city}}</td>
-      <td class="hidden-xs col-sm-5 col=md-1">{{user.address.state}}</td>
-      <td class="hidden-xs col-sm-5 col=md-1">{{user.address.zip}}</td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="row">
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-3">Id: {{mainController.users[0]._id}}</div>
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Age: {{mainController.users[0].age}}</div>
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">First Name: {{mainController.users[0].name.firstName}}</div>
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Middle Name: {{mainController.users[0].name.middleName}}</div>
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Last Name: {{mainController.users[0].name.lastName}}</div>
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Address Line 1: {{mainController.users[0].address.addressLine1}}</div>
-    <div class="hidden-md hidden-lg col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Address Line 2: {{mainController.users[0].address.addressLine2}}</div>
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">City: {{mainController.users[0].address.city}}</div>
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">State: {{mainController.users[0].address.state}}</div>
-    <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Zip: {{mainController.users[0].address.zip}}</div>
-  <div>
 </div>
