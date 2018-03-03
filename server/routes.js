@@ -6,22 +6,16 @@
 
 import errors from './components/errors';
 import path from 'path';
-import * as users from './api/users';
-import * as recipes from './api/project1/recipe';
-import * as reviews from './api/project1/Review';
-import * as user from './api/project1/User';
-
+import * as users from './api/project2/User';
+import * as recipes from './api/project2/recipes';
 
 export default function(app) {
-  app.use('/api/users', users.router);
-  app.use('./api/project1/recipe', recipes.router);
-  app.use('./api/project1/Review', reviews.router);
-  app.use('./api/project1/User', user.router);
-
+  app.use('/api/project2/recipes', recipes.router);
+  app.use('/api/project2/User', users.router);
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
-   .get(errors[404]);
+    .get(errors[404]);
 
   // All other routes should redirect to the index.html
   app.route('/*')
