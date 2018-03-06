@@ -9,9 +9,8 @@
       <ul>
         <li ng-repeat="value in mainController.values">{{ value }}</li>
       </ul>
-
-
       <hr size="5">
+  <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create new User</button>
       <table class="table">
         <thead>
         <tr>
@@ -24,7 +23,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="user in mainController.users">
-          <td><a ng-href="/users/{{user._id}}">{{user._id}}</a></td>
+          <td><button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button></td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>{{user.name.firstName}}</td>
@@ -33,6 +32,7 @@
         </tbody>
       </table>
   <hr size="5">
+  <button ng-click="mainController.createRecipe()" type="button" class="btn btn-default">Create new Recipe</button>
   <table class="table">
     <thead>
     <tr>

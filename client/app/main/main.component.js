@@ -4,9 +4,10 @@ import routing from './main.routes';
 
 export class MainController {
   /*@ngInject*/
-  constructor($http, User, Recipe) {
+  constructor($http, $uibModal, User, Recipe) {
     this.$http = $http;
     this.User = User;
+    this.$uibModal = $uibModal;
     this.Recipe = Recipe;
     this.setData();
     this.getUserData();
@@ -38,8 +39,33 @@ export class MainController {
       });
   }
 
+  createUser() {
+    this.$uibModal.open({
+      template: require('../../components/newUserModal/newUser.html'),
+      controller: 'newUserController as newUserController',
+    });
+  }
+
+  updateUser(user) {
+    this.$uibModal.open({
+      template: require('../../components/updateUserModal/updateUserModal.html'),
+      controller: 'updateUserController as updateUserController',
+      resolve: {
+        user: () => user
+      }
+    });
+  }
+
+  createRecipe() {
+    this.$uibModal.open({
+      template: require('../../components/newRecipeModal/newRecipe.html'),
+      controller: 'newRecipeController as newRecipeController',
+    });
+  }
+
+
 }
-export function UserService($http) {
+/*export function UserService($http) {
   'ngInject';
   var User = {
     getAllUsers() {
@@ -52,8 +78,9 @@ export function UserService($http) {
   }
   return User;
 }
+*/
 
-export function RecipeService($http) {
+/*export function RecipeService($http) {
   'ngInject';
   var Recipe = {
     getAllRecipe() {
@@ -66,6 +93,7 @@ export function RecipeService($http) {
   }
   return Recipe;
 }
+*/
 
 
 export default angular.module('comp3705App.main', [ngRoute])
@@ -75,7 +103,7 @@ export default angular.module('comp3705App.main', [ngRoute])
     controller: MainController,
     controllerAs: 'mainController'
   })
-  .service('User', UserService)
-  .service('Recipe', RecipeService)
+  //.service('User', UserService)
+  //.service('Recipe', RecipeService)
   .name;
 
