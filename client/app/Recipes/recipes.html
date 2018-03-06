@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Recipe information</h1>
+      <br><br>
+      <h1 ng-if="recipesController.valueEntered">recipe id: {{ recipesController.id }}</h1>
+      <br><br>
+      <hr size="5">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Prep Time</th>
+          <th>Cook Time</th>
+          <th>Directions</th>
+          <th>Ingredients Name</th>
+          <th>Amount</th>
+          <th>Reviews</th>
+        </tr>
+        </thead>
+        <tbody><tr ng-repeat="recipe in recipesController.recipes">
+          <td>{{recipesController.id}}</td>
+          <td>{{recipe.name}}</td>
+          <td>{{recipe.description}}</td>
+          <td>{{recipe.image}}</td>
+          <td>{{recipe.prepTime}}</td>
+          <td>{{recipe.cookTime}}</td>
+          <td>{{recipe.direction}}</td>
+          <td>{{recipe.ingredients.name}}</td>
+          <td>{{recipe.ingredients.amount}}</td>
+          <td>{{recipe.reviews}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

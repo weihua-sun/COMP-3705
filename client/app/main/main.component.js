@@ -29,7 +29,7 @@ export class MainController {
   }
 
   getRecipeData() {
-    this.Recipe.getAllUsers()
+    this.Recipe.getAllRecipe()
       .then(response => {
         this.recipes = response.data;
       })
@@ -43,7 +43,11 @@ export function UserService($http) {
   'ngInject';
   var User = {
     getAllUsers() {
-      return $http.get('/api/User/');
+      return $http.get('/api/users/');
+    },
+
+    getUserById(userId) {
+      return $http.get('/api/users/' + userId);
     }
   }
   return User;
@@ -52,20 +56,17 @@ export function UserService($http) {
 export function RecipeService($http) {
   'ngInject';
   var Recipe = {
-    getAllUsers() {
-      return $http.get('/api/Recipe/');
+    getAllRecipe() {
+      return $http.get('/api/recipes/');
+    },
+
+    getRecipeById(recipeId) {
+      return $http.get('/api/recipes/' + recipeId);
     }
   }
   return Recipe;
 }
 
-
-export function SquareFilter() {
-  var squareFunction = function(value) {
-    return value * value;
-  }
-  return squareFunction;
-}
 
 export default angular.module('comp3705App.main', [ngRoute])
   .config(routing)
@@ -76,6 +77,5 @@ export default angular.module('comp3705App.main', [ngRoute])
   })
   .service('User', UserService)
   .service('Recipe', RecipeService)
-  .filter('Square', SquareFilter)
   .name;
 

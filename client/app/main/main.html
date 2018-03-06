@@ -9,8 +9,7 @@
       <ul>
         <li ng-repeat="value in mainController.values">{{ value }}</li>
       </ul>
-      <hr size="5">
-      <h1>{{ mainController.valueToSquare }} * {{ mainController.valueToSquare }} = {{mainController.valueToSquare | Square }}</h1>
+
 
       <hr size="5">
       <table class="table">
@@ -24,8 +23,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="user in mainController.User">
-          <td>{{user._id}}</td>
+        <tr ng-repeat="user in mainController.users">
+          <td><a ng-href="/users/{{user._id}}">{{user._id}}</a></td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>{{user.name.firstName}}</td>
@@ -51,7 +50,7 @@
     </thead>
     <tbody>
     <tr ng-repeat="recipe in mainController.recipes">
-      <td>{{recipe._id}}</td>
+      <td><a ng-href="/recipes/{{recipe._id}}">{{recipe._id}}</a></td>
       <td>{{recipe.name}}</td>
       <td>{{recipe.description}}</td>
       <td>{{recipe.image}}</td>
