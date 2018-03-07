@@ -46,6 +46,7 @@ export class MainController {
     });
   }
 
+
   updateUser(user) {
     this.$uibModal.open({
       template: require('../../components/updateUserModal/updateUserModal.html'),
@@ -56,6 +57,7 @@ export class MainController {
     });
   }
 
+
   createRecipe() {
     this.$uibModal.open({
       template: require('../../components/newRecipeModal/newRecipe.html'),
@@ -63,9 +65,11 @@ export class MainController {
     });
   }
 
+  $onInit() {
+  }
 
 }
-/*export function UserService($http) {
+export function UserService($http) {
   'ngInject';
   var User = {
     getAllUsers() {
@@ -75,12 +79,13 @@ export class MainController {
     getUserById(userId) {
       return $http.get('/api/users/' + userId);
     }
+
   }
   return User;
 }
-*/
 
-/*export function RecipeService($http) {
+
+export function RecipeService($http) {
   'ngInject';
   var Recipe = {
     getAllRecipe() {
@@ -93,8 +98,6 @@ export class MainController {
   }
   return Recipe;
 }
-*/
-
 
 export default angular.module('comp3705App.main', [ngRoute])
   .config(routing)
@@ -103,7 +106,7 @@ export default angular.module('comp3705App.main', [ngRoute])
     controller: MainController,
     controllerAs: 'mainController'
   })
-  //.service('User', UserService)
-  //.service('Recipe', RecipeService)
+  .service('User', UserService)
+  .service('Recipe', RecipeService)
   .name;
 

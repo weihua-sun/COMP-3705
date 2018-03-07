@@ -6,7 +6,7 @@
 
 import errors from './components/errors';
 import path from 'path';
-import * as users from './api/User';
+import * as users from './api/user';
 import * as recipes from './api/recipes';
 
 export default function(app) {

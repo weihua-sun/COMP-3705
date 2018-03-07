@@ -8,9 +8,9 @@
       image: <input value="{{recipeDetailController.recipe.image}}"> <br>
       Prep Time: <input value="{{recipeDetailController.recipe.prepTime}}"> <br>
       Cook Time: <input value="{{recipeDetailController.recipe.cookTime}}"> <br>
-      Direction: <input value="{{recipeDetailController.recipe.direction}}"> <br>
-      Ingredients Name: <input value="{{recipeDetailController.recipe.ingredients.name}}"> <br>
-      Amount: <input value="{{recipeDetailController.recipe.ingredients.amount}}"> <br>
+      Direction: <input value="{{recipeDetailController.recipe.directions}}"> <br>
+      Ingredients Name: <input value="{{recipeDetailController.recipe.ingredients[$index].name}}"> <br>
+      Amount: <input value="{{recipeDetailController.recipe.ingredients[$index].amount}}"> <br>
       Review: <input value="{{recipeDetailController.recipe.reviews}}"> <br>
     </div>
   </div>

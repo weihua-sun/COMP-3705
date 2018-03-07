@@ -6,7 +6,7 @@ import {UserService} from '../main/main.component';
 export class UsersController {
   /*@ngInject*/
   constructor($routeParams, $http, User) {
-    this.routeParams = $routeParams;
+    this.$routeParams = $routeParams;
     this.$http = $http;
     this.User = User;
     this.getUserData();

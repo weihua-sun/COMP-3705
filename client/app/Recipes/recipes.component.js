@@ -6,7 +6,7 @@ import {RecipeService} from '../main/main.component';
 export class RecipesController {
   /*@ngInject*/
   constructor($routeParams, $http, Recipe) {
-    this.routeParams = $routeParams;
+    this.$routeParams = $routeParams;
     this.$http = $http;
     this.Recipe = Recipe;
     this.getRecipeData();

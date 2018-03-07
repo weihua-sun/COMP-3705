@@ -16,14 +16,23 @@
             <th>Last Name</th>
           </tr>
         </thead>
-          <tbody><tr ng-repeat="user in usersController.users">
+          <tbody>
+          <tr ng-repeat="user in usersController.users">
             <td>{{usersController.id}}</td>
             <td>{{user.username}}</td>
             <td>{{user.email}}</td>
             <td>{{user.name.firstName}}</td>
             <td>{{user.name.lastName}}</td>
           </tr>
-        </tbody>
+          <!--<div class="row">
+             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-3">Id: {{mainController.users[0]._id}}</div>
+             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">User Name: {{mainController.users[$index].username}}</div>
+             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Email: {{mainController.users[$index].email}}</div>
+             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">First Name: {{mainController.users[$index].name.firstName}}</div>
+             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Last Name: {{mainController.users[$index].name.lastName}}</div>
+          </div>
+          -->
+         </tbody>
         </table>
       </div>
     </div>

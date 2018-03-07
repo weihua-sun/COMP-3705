@@ -21,16 +21,17 @@
           <th>Reviews</th>
         </tr>
         </thead>
-        <tbody><tr ng-repeat="recipe in recipesController.recipes">
+        <tbody>
+        <tr ng-repeat ="recipe in recipesController.recipes">
           <td>{{recipesController.id}}</td>
           <td>{{recipe.name}}</td>
           <td>{{recipe.description}}</td>
           <td>{{recipe.image}}</td>
           <td>{{recipe.prepTime}}</td>
           <td>{{recipe.cookTime}}</td>
-          <td>{{recipe.direction}}</td>
+          <td>{{recipe.directions}}</td>
           <td>{{recipe.ingredients.name}}</td>
-          <td>{{recipe.ingredients.amount}}</td>
+          <td>{{recipe.ingredients[$index].amount}}</td>
           <td>{{recipe.reviews}}</td>
         </tr>
         </tbody>

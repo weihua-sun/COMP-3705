@@ -23,12 +23,13 @@
         </thead>
         <tbody>
         <tr ng-repeat="user in mainController.users">
-          <td><button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button></td>
+          <td><a ng-href="/users/{{user._id}}">{{user._id}}</a></td>
+          <!--<td>{{user._id}}</td>-->
+          <!--<td><button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button></td>-->
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>{{user.name.firstName}}</td>
           <td>{{user.name.lastName}}</td>
-        </tr>
         </tbody>
       </table>
   <hr size="5">
@@ -56,11 +57,10 @@
       <td>{{recipe.image}}</td>
       <td>{{recipe.prepTime}}</td>
       <td>{{recipe.cookTime}}</td>
-      <td>{{recipe.direction}}</td>
-      <td>{{recipe.ingredients.name}}</td>
-      <td>{{recipe.ingredients.amount}}</td>
+      <td>{{recipe.directions}}</td>
+      <td><a ng-repeat ="ingredient in mainContoller.recipe.ingredients">{{ingredient.name}}</a></td>
+        <td>{{ingredient.amount}}</td>
       <td>{{recipe.reviews}}</td>
-    </tr>
     </tbody>
   </table>
     </div>
