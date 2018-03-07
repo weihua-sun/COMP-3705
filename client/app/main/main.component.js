@@ -27,6 +27,13 @@ export class MainController {
       .catch(error => {
         console.error(error);
       });
+    this.User.getUserById()
+      .then(response => {
+        this.users = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   getRecipeData() {
@@ -80,10 +87,9 @@ export function UserService($http) {
       return $http.get('/api/users/' + userId);
     }
 
-  }
+  };
   return User;
 }
-
 
 export function RecipeService($http) {
   'ngInject';
@@ -95,7 +101,7 @@ export function RecipeService($http) {
     getRecipeById(recipeId) {
       return $http.get('/api/recipes/' + recipeId);
     }
-  }
+  };
   return Recipe;
 }
 

@@ -13,7 +13,7 @@ export class RecipesController {
   }
 
   getRecipeData() {
-    this.Recipe.getAllRecipe()
+    this.Recipe.getRecipeById(this.$routeParams.id)
       .then(response => {
         this.recipes = response.data;
       })

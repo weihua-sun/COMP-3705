@@ -3,6 +3,7 @@ const ngRoute = require('angular-route');
 import routing from './users.routes';
 import {UserService} from '../main/main.component';
 
+
 export class UsersController {
   /*@ngInject*/
   constructor($routeParams, $http, User) {
@@ -13,11 +14,10 @@ export class UsersController {
   }
 
   getUserData() {
-    this.User.getAllUsers()
+    this.User.getUserById(this.$routeParams.id)
       .then(response => {
-        this.users = response.data;
+        this.user = response;
       })
-
       .catch(error => {
         console.error(error);
       });
@@ -32,6 +32,7 @@ export class UsersController {
     }
   }
 
+
 }
 
 export default angular.module('comp3705App.users', [ngRoute])
@@ -42,4 +43,4 @@ export default angular.module('comp3705App.users', [ngRoute])
     controllerAs: 'usersController'
   })
   .service('User', UserService)
-  .name
+  .name;
