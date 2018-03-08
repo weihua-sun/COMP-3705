@@ -1,16 +1,64 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Project 2</h1>
+      <h1 class="page-header"><strong> Recipe</strong></h1>
     </div>
   </div>
+  <!--
       <input ng-model="mainController.input" />
       <h1>You entered: {{ mainController.input }}</h1>
       <ul>
         <li ng-repeat="value in mainController.values">{{ value }}</li>
       </ul>
+      -->
+  <!--
       <hr size="5">
-  <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create new User</button>
+
+  <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create new User </button>
+  <style>
+    .horizontal-collapse {
+      height: 70px;
+    }
+    .navbar-collapse.in {
+      overflow-y: hidden;
+    }
+  </style>
+  <div ng-controller="CollapseDemoCtrl">
+    <hr>
+    <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse Vertically</button>
+    <hr>
+    <div uib-collapse="isCollapsed">
+      <div class="well well-lg">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>User Name</th>
+            <th>E-mail</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>delete</th>>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="user in mainController.users">
+            <td><a ng-href="/users/{{user._id}}">{{user._id}}</a></td>
+            <!--<td>{{user._id}}</td>-->
+            <!--<td><button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button></td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.name.firstName}}</td>
+            <td>{{user.name.lastName}}</td>
+            <td><button ng-click="mainController.deleteUser(user._id)" type="button" class="btn btn-default">delete</button></td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+-->
+  <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create new User </button>
+
       <table class="table">
         <thead>
         <tr>
@@ -19,6 +67,7 @@
           <th>E-mail</th>
           <th>First Name</th>
           <th>Last Name</th>
+          <th>delete</th>>
         </tr>
         </thead>
         <tbody>
@@ -30,39 +79,37 @@
           <td>{{user.email}}</td>
           <td>{{user.name.firstName}}</td>
           <td>{{user.name.lastName}}</td>
+          <td><button ng-click="mainController.deleteUser(user._id)" type="button" class="btn btn-default">delete</button></td>
         </tbody>
       </table>
-  <hr size="5">
   <button ng-click="mainController.createRecipe()" type="button" class="btn btn-default">Create new Recipe</button>
+  <div class="col-lg-12">
+    <h4 class="page-header">Recipe List</h4>
+  </div>
+  <!--
+  <tr ng-repeat="recipe in mainController.recipes">
+    <td><a ng-href="/recipes/{{recipe.image}}"></a></td>
+  <a ng-repeat="recipe in mainController.recipes" ng-href="/recipes/{{recipe._id}}" img src = "{{mainController.recipe.image}}" width="1100" height="500" style="text-align:center">
+  -->
+  <hr size="5">
   <table class="table">
     <thead>
     <tr>
       <th>Id</th>
       <th>Name</th>
-      <th>Description</th>
       <th>Image</th>
-      <th>Prep Time</th>
-      <th>Cook Time</th>
-      <th>Directions</th>
-      <th>Ingredients Name</th>
-      <th>Amount</th>
-      <th>Reviews</th>
+      <th>Delete</th>
+      <th>
     </tr>
     </thead>
-    <tbody>
-    <tr ng-repeat="recipe in mainController.recipes">
-      <td><a ng-href="/recipes/{{recipe._id}}">{{recipe._id}}</a></td>
+    <tbody ng-repeat="recipe in mainController.recipes">
+     <tr>
+       <td><a ng-href="/recipes/{{recipe._id}}">{{recipe._id}}</a></td>
       <td>{{recipe.name}}</td>
-      <td>{{recipe.description}}</td>
-      <td>{{recipe.image}}</td>
-      <td>{{recipe.prepTime}}</td>
-      <td>{{recipe.cookTime}}</td>
-      <td>{{recipe.directions}}</td>
-      <td><a ng-repeat ="ingredient in mainContoller.recipe.ingredients">{{ingredient.name}}</a></td>
-        <td>{{ingredient.amount}}</td>
-      <td>{{recipe.reviews}}</td>
+      <td><img src = "{{mainController.recipe.image}}"  width="100" height="100"></td>
+      <td><button ng-click="mainController.deleteUser(user._id)" type="button" class="btn btn-default">delete</button></td>
+    </tr>
     </tbody>
   </table>
-    </div>
-  </div>
+</div>
 </div>

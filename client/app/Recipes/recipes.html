@@ -1,46 +1,76 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Recipe information</h1>
+      <h1 class="page-header" style="text-align:center">{{recipesController.recipe.name}}</h1>
       <br><br>
-      <h1 ng-if="recipesController.valueEntered">recipe id: {{ recipesController.id }}</h1>
+      <h5><button ng-click="recipesController.updateRecipe(recipe)" type="button" class="btn btn-default" ng-herf="recipesController.valueEntered">update</button></h5>
       <br><br>
-      <hr size="5">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th>Prep Time</th>
-          <th>Cook Time</th>
-          <th>Directions</th>
-          <th>Ingredients Name</th>
-          <th>Amount</th>
-          <th>Reviews</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat ="recipe in recipesController.recipes">
-          <td>{{recipesController.id}}</td>
-          <td>{{recipe.name}}</td>
-          <td>{{recipe.description}}</td>
-          <td>{{recipe.image}}</td>
-          <td>{{recipe.prepTime}}</td>
-          <td>{{recipe.cookTime}}</td>
-          <td>{{recipe.directions}}</td>
-          <td>{{recipe.ingredients}}</td>
-           <ul>
-            <li ng-repeat="ingredient in recipe.ingredients">
-                <td>{{ingredient.name}}</td>
-                <td>{{ingredient.amount}}</td>
-            </li>
+      <p>{{recipesController.recipe.description}}</p>
+      <h4>Rate</h4>
+      <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+      <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
 
-           </ul>
-          <td>{{recipe.reviews}}</td>
-        </tbody>
-      </table>
+      <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+
+      <button type="button" class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
+      <button type="button" class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
+      <hr />
+    </div>
+    <form name="outerForm" class="tab-form-demo">
+      <uib-tabset active="activeForm">
+        <uib-tab style="font-size:30px" index="0" heading="Ingredient">
+          <!--
+          <label>Name</label>
+          <input type="text" class="form-control" required ng-model="model.name"/>
+          -->
+          <table class="table">
+            <thead>
+            <tr>
+              <th><strong>Ingredient Name</strong></th>
+              <th><strong>Amount</strong></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="ingredient in recipesController.recipe.ingredients">
+              <td>{{ingredient.name}}</td>
+              <td>{{ingredient.amount}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </uib-tab>
+        <uib-tab style="font-size:30px" index="1" heading="Prep Time">
+          <p style="font-size:40px" ><img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT75XLf9-WlZKh7yaIBEQ5BseliVxBNWzk7njYcYBYbbr2zw68J8Q" width="40" height="40" style="text-align:center"> {{recipesController.recipe.prepTime}} Mins</p>
+        </uib-tab>
+        <uib-tab style="font-size:30px" index="2" heading="Cook Time">
+          <p style="font-size:40px" ><img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT75XLf9-WlZKh7yaIBEQ5BseliVxBNWzk7njYcYBYbbr2zw68J8Q" width="40" height="40" style="text-align:center"> {{recipesController.recipe.cookTime}} Mins</p>
+        </uib-tab>
+        <uib-tab style="font-size:30px" index="3" heading="Reviws">
+          <li style="font-size:20px" >{{recipesController.recipe.reviews}}</li>
+        </uib-tab>
+      </uib-tabset>
+    </form>
+    <img src = "{{recipesController.recipe.image}}" width="1100" height="500" style="text-align:center">
+
+    <!--
+    <table class="table">
+      <thead>
+      <tr>
+        <th><strong>Ingredient Name</strong></th>
+        <th><strong>Amount</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="ingredient in recipesController.recipe.ingredients">
+        <td>
+          <li>{{ingredient.name}}</li>
+        </td>
+        <td>
+          <li>{{ingredient.amount}}</li>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    -->
     </div>
   </div>
 </div>

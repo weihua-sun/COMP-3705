@@ -5,22 +5,86 @@ import {RecipeService} from '../main/main.component';
 
 export class RecipesController {
   /*@ngInject*/
-  constructor($routeParams, $http, Recipe) {
+  constructor($routeParams, $http, Recipe, $scope, $uibModal) {
     this.$routeParams = $routeParams;
     this.$http = $http;
     this.Recipe = Recipe;
+    this.$uibModal = $uibModal;
     this.getRecipeData();
+    this.rating($scope);
+    this.tab($scope);
   }
 
   getRecipeData() {
     this.Recipe.getRecipeById(this.$routeParams.id)
       .then(response => {
-        this.recipes = response.data;
+        this.recipe = response.data;
       })
       .catch(error => {
         console.error(error);
       });
   }
+  /*getReviewData() {
+    this.Review.getAllReview()
+      .then(response => {
+        this.reviews = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    this.Review.getReviewById()
+      .then(response => {
+        this.reviews = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+  */
+
+  updateRecipe(recipe) {
+    this.$uibModal.open({
+      template: require('../../components/updateRecipeModal/updateRecipeModal.html'),
+      controller: 'updateRecipeController as updateRecipeController',
+      resolve: {
+        recipe: () => recipe
+      }
+    });
+  }
+
+  rating($scope) {
+    $scope.rate = 7;
+    $scope.max = 10;
+    $scope.isReadonly = false;
+
+    $scope.hoveringOver = function(value) {
+      $scope.overStar = value;
+      $scope.percent = 100 * (value / $scope.max);
+    };
+  }
+
+  tab($scope) {
+    $scope.tabs = [
+      { title: 'Dynamic Title 1', content: 'Dynamic content 1' },
+      { title: 'Dynamic Title 2', content: 'Dynamic content 2', disabled: true }
+    ];
+
+    $scope.model = {
+      name: 'Tabs'
+    };
+  }
+
+  /*updateReview(review) {
+    this.$uibModal.open({
+      template: require('../../components/updateReviewModal/updateReviewModal.html'),
+      controller: 'updateReviewController as updateReviewController',
+      resolve: {
+        review: () => review
+      }
+    });
+  }
+  */
+
   $onInit() {
     if(this.$routeParams.id) {
       this.valueEntered = true;
@@ -32,6 +96,16 @@ export class RecipesController {
 
 }
 
+export function ReviewService($http) {
+  'ngInject';
+  var Review = {
+
+    updateReview(recipeId) {
+      return $http.put('/api/recipes/:recipeId/reviews/' + recipeId);
+    }
+  };
+  return Review;
+}
 export default angular.module('comp3705App.recipes', [ngRoute])
   .config(routing)
   .component('recipes', {
@@ -40,4 +114,5 @@ export default angular.module('comp3705App.recipes', [ngRoute])
     controllerAs: 'recipesController'
   })
   .service('Recipe', RecipeService)
+  .service('Revioew', ReviewService)
   .name;

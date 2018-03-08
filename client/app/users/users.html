@@ -3,13 +3,23 @@
       <div class="col-lg-12">
         <h1 class="page-header">user information</h1>
         <br><br>
-        <h1 ng-if="usersController.valueEntered">user id: {{ usersController.id }}</h1>
+        <h5><button ng-click="usersController.updateUser(user)" type="button" class="btn btn-default" ng-herf="usersController.valueEntered">update {{ usersController.id }}</button></h5>
         <br><br>
+         <!-- <h4>Default</h4>
+          <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+          <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+
+          <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+
+          <button type="button" class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
+          <button type="button" class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
+          <hr />
+          -->
+
         <hr size="5">
         <table class="table">
           <thead>
           <tr>
-            <th>Id</th>
             <th>User Name</th>
             <th>E-mail</th>
             <th>First Name</th>
@@ -17,21 +27,12 @@
           </tr>
         </thead>
           <tbody>
-          <tr ng-repeat="user in usersController.users">
-            <td>{{usersController.id}}</td>
-            <td>{{user.username}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.name.firstName}}</td>
-            <td>{{user.name.lastName}}</td>
+          <tr>
+            <td>{{usersController.user.username}}</td>
+            <td>{{usersController.user.email}}</td>
+            <td>{{usersController.user.name.firstName}}</td>
+            <td>{{usersController.user.name.lastName}}</td>
           </tr>
-          <!--<div class="row">
-             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-3">Id: {{mainController.users[0]._id}}</div>
-             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">User Name: {{mainController.users[$index].username}}</div>
-             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Email: {{mainController.users[$index].email}}</div>
-             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">First Name: {{mainController.users[$index].name.firstName}}</div>
-             <div class="col-xs-offest-3 col-xs-9 col-sm-offset-0 col-sm-12 col-md-1">Last Name: {{mainController.users[$index].name.lastName}}</div>
-          </div>
-          -->
          </tbody>
         </table>
       </div>
