@@ -19,8 +19,11 @@ export function UserService($resource) {
     },
     createUser(user) {
       return $resource('/api/users').save(user).$promise;
-    }
+    },
 
+    deleteUser(userId) {
+      return $resource('api/users/:id').delete({id: userId}).$promise;
+    }
   };
   return User;
 }

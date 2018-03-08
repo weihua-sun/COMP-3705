@@ -3,7 +3,7 @@
       <div class="modal-header">
         <button type="button" ng-click="updateUserController.cancel()" class="close"><span
           aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-        <h4 id="myModalLabel" class="modal-title">Updating user {{ updateUserController.user._id }}</h4>
+        <h4 id="myModalLabel" class="modal-title">Updating user{{ updateUserController.user._id }}</h4>
       </div>
       <div class="modal-body">
         <div role="alert" ng-show="updateUserController.formError" class="alert alert-danger">{{ updateUserController.formError }}</div>
@@ -14,7 +14,6 @@
             <input id="firstname" name="firstname" required="required" ng-model="updateUserController.user.name.firstname" class="form-control"/>
           </div>
         </div>
-
         <div class="form-group">
           <label for="lastname" class="col-xs-2 col-sm-2 control-label">Last Name</label>
           <div class="col-xs-10 col-sm-10">
@@ -22,10 +21,8 @@
           </div>
         </div>
       </div>
-
       <div class="modal-footer">
-        <button ng-click="updateUserController.cancel()" type="button" class="btn btndefault">
-          Cancel</button>
+        <button ng-click="updateUserController.cancel()" type="button" class="btn btndefault">Cancel</button>
         <button type="submit" class="btn btn-primary" ng-click="updateUserController.submitForm()">Update User</button>
       </div>
     </form>

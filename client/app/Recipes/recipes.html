@@ -9,11 +9,6 @@
       <h4>Rate</h4>
       <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
       <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
-
-      <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
-
-      <button type="button" class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
-      <button type="button" class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
       <hr />
     </div>
     <form name="outerForm" class="tab-form-demo">
@@ -38,13 +33,20 @@
             </tbody>
           </table>
         </uib-tab>
-        <uib-tab style="font-size:30px" index="1" heading="Prep Time">
+
+        <uib-tab style="font-size:30px" index="1" heading=Direction>
+          <li style="font-size:20px" >{{recipesController.recipe.directions}}</li>
+        </uib-tab>
+
+        <uib-tab style="font-size:30px" index="2" heading="Prep Time">
           <p style="font-size:40px" ><img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT75XLf9-WlZKh7yaIBEQ5BseliVxBNWzk7njYcYBYbbr2zw68J8Q" width="40" height="40" style="text-align:center"> {{recipesController.recipe.prepTime}} Mins</p>
         </uib-tab>
-        <uib-tab style="font-size:30px" index="2" heading="Cook Time">
+
+        <uib-tab style="font-size:30px" index="3" heading="Cook Time">
           <p style="font-size:40px" ><img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT75XLf9-WlZKh7yaIBEQ5BseliVxBNWzk7njYcYBYbbr2zw68J8Q" width="40" height="40" style="text-align:center"> {{recipesController.recipe.cookTime}} Mins</p>
         </uib-tab>
-        <uib-tab style="font-size:30px" index="3" heading="Reviws">
+
+        <uib-tab style="font-size:30px" index="4" heading="Reviws">
           <li style="font-size:20px" >{{recipesController.recipe.reviews}}</li>
         </uib-tab>
       </uib-tabset>

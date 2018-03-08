@@ -11,7 +11,7 @@ export class RecipeDetailController {
   }
 
   getRecipeData() {
-    this.User.getRecipeById(this.$routeParams.id)
+    this.Recipe.getRecipeById(this.$routeParams.id)
       .then(response => {
         this.recipe = response;
       })

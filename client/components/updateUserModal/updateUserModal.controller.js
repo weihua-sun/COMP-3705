@@ -1,4 +1,5 @@
 import angular from 'angular';
+const ngRoute = require('angular-route');
 
 export class UpdateUserController {
   /*@ngInject*/
@@ -24,7 +25,7 @@ export class UpdateUserController {
   }
 }
 
-export default angular.module('comp3705App.updateUserModal', [])
+export default angular.module('comp3705App.updateUserModal', [ngRoute])
   .controller('updateUserController', UpdateUserController)
   .config(['$qProvider', function($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);

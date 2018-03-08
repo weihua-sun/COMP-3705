@@ -1,14 +1,14 @@
 import angular from 'angular';
 const ngRoute = require('angular-route');
 import routing from './users.routes';
-import {UserService} from '../main/main.component';
+//import {UserService} from '/../main/main.component';
+import {UserService} from '../../components/userService/user.service';
 
 
 export class UsersController {
   /*@ngInject*/
-  constructor($routeParams, $http, User, $scope, $uibModal) {
+  constructor($routeParams, User, $scope, $uibModal) {
     this.$routeParams = $routeParams;
-    this.$http = $http;
     this.User = User;
     this.$uibModal = $uibModal;
     this.getUserData();
@@ -20,7 +20,7 @@ export class UsersController {
   getUserData() {
     this.User.getUserById(this.$routeParams.id)
       .then(response => {
-        this.user = response.data;
+        this.user = response;
       })
       .catch(error => {
         console.error(error);
@@ -60,7 +60,7 @@ export class UsersController {
   }
 
 
-  $onInit() {
+  /*$onInit() {
     if(this.$routeParams.id) {
       this.valueEntered = true;
       this.id = this.$routeParams.id;
@@ -68,6 +68,7 @@ export class UsersController {
       this.valueEntered = false;
     }
   }
+  */
 
 }
 

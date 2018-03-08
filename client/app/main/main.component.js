@@ -11,28 +11,22 @@ export class MainController {
    // this.$resource = $resource;
     this.Recipe = Recipe;
     this.$scope = $scope;
-    this.setData();
     this.getUserData();
     this.getRecipeData();
     this.collapse($scope);
   }
 
-  setData() {
-    this.values = ['first', 'second', 'third'];
-    this.valueToSquare = 4;
-  }
-
   getUserData() {
     this.User.getAllUsers()
       .then(response => {
-        this.users = response.data;
+        this.users = response;
       })
       .catch(error => {
         console.error(error);
       });
     this.User.getUserById()
       .then(response => {
-        this.users = response.data;
+        this.users = response;
       })
       .catch(error => {
         console.error(error);
@@ -72,14 +66,14 @@ export class MainController {
   deleteUser(userId) {
     this.User.getUserById(userId)
       .then(response => {
-        this.user = response.data;
+        this.user = response;
       })
       .catch(error => {
         console.error(error);
       });
   }
 
-  /*updateUser(user) {
+  updateUser(user) {
     this.$uibModal.open({
       template: require('../../components/updateUserModal/updateUserModal.html'),
       controller: 'updateUserController as updateUserController',
@@ -88,7 +82,6 @@ export class MainController {
       }
     });
   }
-  */
 
   createRecipe() {
     this.$uibModal.open({
@@ -135,7 +128,7 @@ export class MainController {
 
 }
 
-export function UserService($http) {
+/*export function UserService($http) {
   'ngInject';
   var User = {
     getAllUsers() {
@@ -184,6 +177,7 @@ export function UserService($http) {
         });
       return updateResource.update({ id: user._id }, user).$promise;
     },
+
     createUser(user) {
       return $resource('/api/users').save(user).$promise;
     }
@@ -191,8 +185,8 @@ export function UserService($http) {
   };
   return User;
 }
-
 */
+
 export function RecipeService($http) {
   'ngInject';
   var Recipe = {
@@ -228,7 +222,7 @@ export default angular.module('comp3705App.main', [ngRoute])
     controller: MainController,
     controllerAs: 'mainController'
   })
-  .service('User', UserService)
+  //.service('User', UserService)
   .service('Recipe', RecipeService)
   .name;
 

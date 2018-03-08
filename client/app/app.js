@@ -15,21 +15,21 @@ import {
 } from './app.config';
 
 import main from './main/main.component';
-import userDetail from './userDetail/userDetail.component';
-import about from './about/about.component';
+//import userDetail from './userDetail/userDetail.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import users from './users/users.component';
 import recipes from './recipes/recipes.component';
 import updateRecipeModal from '../components/updateRecipeModal/updateRecipeModal.controller';
-//import user from '../components/userService/user.module';
+import user from '../components/userService/user.module';
 import newUser from '../components/newUserModal/newUser.controller';
 import updateUserModal from '../components/updateUserModal/updateUserModal.controller';
 import updateReviewModal from '../components/updateReviewModal/updateReviewModal.controller';
 import newRecipe from '../components/newRecipeModal/newRecipe.controller';
+//import recipe from '../components/recipeService/recipe.module';
 import './app.scss';
 
-angular.module('comp3705App', [ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap, main, about, userDetail, constants, util, users, recipes, newRecipe /*, user*/, newUser, updateUserModal, updateRecipeModal, updateReviewModal])
+angular.module('comp3705App', [ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap, main, constants, util, users, recipes, newRecipe, user, newUser, updateUserModal, updateRecipeModal, updateReviewModal])
   .config(routeConfig);
 
 angular.element(document)

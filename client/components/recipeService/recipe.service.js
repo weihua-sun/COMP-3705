@@ -10,17 +10,23 @@ export function RecipeService($resource) {
     getRecipeById(recipeId) {
       return $resource('/api/recipes/:id').get({id: recipeId}).$promise;
     },
-   /* updateRecipe(recipe) {
+
+    updateRecipe(recipe) {
       let updateResource = $resource('/api/recipes/:id', null,
         {
           update: { method: 'PUT' }
         });
       return updateResource.update({ id: recipe._id }, recipe).$promise;
     },
-    /*createUser(user) {
+    createUser(user) {
       return $resource('/api/users').save(user).$promise;
+    },
+
+    deleteRecipe(userId) {
+      return $resource('api/users/:id').delete({id: userId}).$promise;
     }
-    */
+
+
   };
   return Recipe;
 }
