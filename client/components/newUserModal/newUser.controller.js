@@ -12,13 +12,13 @@ export class NewUserController {
   }
   submitForm() {
     this.User.createUser(this.user)
-          .then(response => {
-            this.formInfo = 'Successfully created user ' + response._id;
-          })
-          .catch(err => {
-            console.error(err);
-            this.formError = err.data.errmsg;
-          });
+      .then(response => {
+        this.formInfo = 'Successfully created user ' + response._id;
+      })
+      .catch(err => {
+        console.error(err);
+        this.formError = err.data.errmsg;
+      });
   }
 }
 

@@ -18,6 +18,7 @@ export function UserService($resource) {
       return updateResource.update({ id: user._id }, user).$promise;
     },
     createUser(user) {
+      console.log(user)
       return $resource('/api/users').save(user).$promise;
     },
 

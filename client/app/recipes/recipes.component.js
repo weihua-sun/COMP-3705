@@ -1,8 +1,10 @@
+
 import angular from 'angular';
 const ngRoute = require('angular-route');
 import routing from './recipes.routes';
-import {RecipeService} from '../main/main.component';
-//import {RecipeService} from '../../components/recipeService/recipe.service';
+//import {RecipeService} from '/../main/main.component';
+import {RecipeService} from '../../components/recipeService/recipe.service';
+
 
 export class RecipesController {
   /*@ngInject*/
@@ -13,34 +15,18 @@ export class RecipesController {
     this.getRecipeData();
     this.rating($scope);
     this.tab($scope);
+    // this.updateRecipe();
   }
 
   getRecipeData() {
     this.Recipe.getRecipeById(this.$routeParams.id)
       .then(response => {
-        this.recipe = response.data;
+        this.recipe = response;
       })
       .catch(error => {
         console.error(error);
       });
   }
-  getReviewData() {
-    this.Review.getAllReview()
-      .then(response => {
-        this.reviews = response.data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    this.Review.getReviewById(recipeId, reviewId)
-      .then(response => {
-        this.reviews = response.data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
-
 
   updateRecipe(recipe) {
     this.$uibModal.open({
@@ -74,18 +60,8 @@ export class RecipesController {
     };
   }
 
-  updateReview(recipeId, review) {
-    this.$uibModal.open({
-      template: require('../../components/updateReviewModal/updateReviewModal.html'),
-      controller: 'updateReviewController as updateReviewController',
-      resolve: {
-        review: () => review
-      }
-    });
-  }
 
-
-  $onInit() {
+  /*$onInit() {
     if(this.$routeParams.id) {
       this.valueEntered = true;
       this.id = this.$routeParams.id;
@@ -93,24 +69,8 @@ export class RecipesController {
       this.valueEntered = false;
     }
   }
+  */
 
-}
-
-export function ReviewService($http) {
-  'ngInject';
-  var Review = {
-    getAllReview() {
-      return $http.get('/api/recipes/');
-    },
-
-    getReviewById(recipeId, review) {
-      return $http.get('/api/recipes/:recipeId' + review);
-    },
-    updateReview(recipeId) {
-      return $http.put('/api/recipes/:recipeId/reviews/' + recipeId);
-    }
-  };
-  return Review;
 }
 
 export default angular.module('comp3705App.recipes', [ngRoute])
@@ -121,5 +81,5 @@ export default angular.module('comp3705App.recipes', [ngRoute])
     controllerAs: 'recipesController'
   })
   .service('Recipe', RecipeService)
-  //.service('Revioew', ReviewService)
   .name;
+

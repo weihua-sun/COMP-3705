@@ -1,8 +1,7 @@
 import angular from 'angular';
-const ngRoute = require('angular-route');
 
 export class UpdateUserController {
-  /*@ngInject*/
+ /*@ngInject*/
   constructor($uibModalInstance, User, user) {
     this.User = User;
     this.$uibModalInstance = $uibModalInstance;
@@ -15,19 +14,19 @@ export class UpdateUserController {
 
   submitForm() {
     this.User.updateUser(this.user)
-      .then(() => {
-        this.formInfo = 'User successfully updated!';
-      })
-      .catch(err => {
-        console.error(err);
-        this.formError = err.toString();
-      });
+   .then(() => {
+     this.formInfo = 'User successfully updated!';
+   })
+   .catch(err => {
+     console.error(err);
+     this.formError = err.toString();
+   });
   }
 }
 
-export default angular.module('comp3705App.updateUserModal', [ngRoute])
-  .controller('updateUserController', UpdateUserController)
-  .config(['$qProvider', function($qProvider) {
-    $qProvider.errorOnUnhandledRejections(false);
-  }])
-  .name;
+export default angular.module('comp3705App.updateUserModal', [])
+ .controller('updateUserController', UpdateUserController)
+ .config(['$qProvider', function($qProvider) {
+   $qProvider.errorOnUnhandledRejections(false);
+ }])
+ .name;

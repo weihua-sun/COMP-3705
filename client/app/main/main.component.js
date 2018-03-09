@@ -4,8 +4,8 @@ import routing from './main.routes';
 
 export class MainController {
   /*@ngInject*/
-  constructor($http, $uibModal, User, Recipe, $scope) {
-    this.$http = $http;
+  constructor($uibModal, User, Recipe, $scope) {
+   // this.$http = $http;
     this.User = User;
     this.$uibModal = $uibModal;
    // this.$resource = $resource;
@@ -15,7 +15,7 @@ export class MainController {
     this.getRecipeData();
     this.collapse($scope);
   }
-
+////////////////////////////////////User////////////////////////////////
   getUserData() {
     this.User.getAllUsers()
       .then(response => {
@@ -33,24 +33,9 @@ export class MainController {
       });
   }
 
-  getRecipeData() {
-    this.Recipe.getAllRecipe()
-      .then(response => {
-        this.recipes = response.data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    this.Recipe.getRecipeById()
-      .then(response => {
-        this.recipes = response.data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
 
   createUser() {
+    console.log()
     this.$uibModal.open({
       template: require('../../components/newUserModal/newUser.html'),
       controller: 'newUserController as newUserController',
@@ -81,9 +66,29 @@ export class MainController {
         user: () => user
       }
     });
+    console.log(user);
+  }
+
+////////////////////////////////////Recipe////////////////////////////////
+  getRecipeData() {
+    this.Recipe.getAllRecipes()
+      .then(response => {
+        this.recipes = response;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    this.Recipe.getRecipeById()
+      .then(response => {
+        this.recipes = response;
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   createRecipe() {
+    console.log()
     this.$uibModal.open({
       template: require('../../components/newRecipeModal/newRecipe.html'),
       controller: 'newRecipeController as newRecipeController',
@@ -96,10 +101,22 @@ export class MainController {
       });
   }
 
+  updateRecipe(recipe) {
+    console.log(recipe)
+    this.$uibModal.open({
+      template: require('../../components/updateRecipeModal/updateRecipeModal.html'),
+      controller: 'updateRecipeController as updateRecipeController',
+      resolve: {
+        recipe: () => recipe
+      }
+    });
+    console.log(recipe);
+  }
+
   deleteRecipe(recipeId) {
-    this.User.getUserById(recipeId)
+    this.Recipe.getRecipeById(recipeId)
       .then(response => {
-        this.user = response.data;
+        this.recipe = response.data;
       })
       .catch(error => {
         console.error(error);
@@ -187,7 +204,7 @@ export class MainController {
 }
 */
 
-export function RecipeService($http) {
+/*export function RecipeService($http) {
   'ngInject';
   var Recipe = {
     getAllRecipe() {
@@ -203,7 +220,7 @@ export function RecipeService($http) {
     },
 
     updateRecipe(recipeId) {
-      return $http.put('/api/recipes/' + recipeId);
+      return $http.put('/api/recipes/:_id' + recipeId);
     },
 
     deleteRecipe(recipeId) {
@@ -214,7 +231,7 @@ export function RecipeService($http) {
 
   return Recipe;
 }
-
+*/
 export default angular.module('comp3705App.main', [ngRoute])
   .config(routing)
   .component('main', {
@@ -223,6 +240,6 @@ export default angular.module('comp3705App.main', [ngRoute])
     controllerAs: 'mainController'
   })
   //.service('User', UserService)
-  .service('Recipe', RecipeService)
+  //.service('Recipe', RecipeService)
   .name;
 

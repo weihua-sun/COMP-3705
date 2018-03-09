@@ -26,10 +26,10 @@ import newUser from '../components/newUserModal/newUser.controller';
 import updateUserModal from '../components/updateUserModal/updateUserModal.controller';
 import updateReviewModal from '../components/updateReviewModal/updateReviewModal.controller';
 import newRecipe from '../components/newRecipeModal/newRecipe.controller';
-//import recipe from '../components/recipeService/recipe.module';
+import recipe from '../components/recipeService/recipe.module';
 import './app.scss';
 
-angular.module('comp3705App', [ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap, main, constants, util, users, recipes, newRecipe, user, newUser, updateUserModal, updateRecipeModal, updateReviewModal])
+angular.module('comp3705App', [ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap, main, constants, util, users, recipes, newRecipe, user, newUser, updateUserModal, updateRecipeModal, updateReviewModal, recipe])
   .config(routeConfig);
 
 angular.element(document)

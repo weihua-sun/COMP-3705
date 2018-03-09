@@ -8,25 +8,26 @@ export class UpdateRecipeController {
     this.recipe = recipe;
   }
 
+
   cancel() {
     this.$uibModalInstance.dismiss('cancel');
   }
 
   submitForm() {
     this.Recipe.updateRecipe(this.recipe)
-      .then(() => {
-        this.formInfo = 'Recipe successfully updated!';
-      })
-      .catch(err => {
-        console.error(err);
-        this.formError = err.toString();
-      });
+        .then(() => {
+          this.formInfo = 'Recipe successfully updated!';
+        })
+        .catch(err => {
+          console.error(err);
+          this.formError = err.toString();
+        });
   }
 }
 
 export default angular.module('comp3705App.updateRecipeModal', [])
-  .controller('updateRecipeController', UpdateRecipeController)
-  .config(['$qProvider', function($qProvider) {
-    $qProvider.errorOnUnhandledRejections(false);
-  }])
-  .name;
+.controller('updateRecipeController', UpdateRecipeController)
+.config(['$qProvider', function($qProvider) {
+  $qProvider.errorOnUnhandledRejections(false);
+}])
+.name;

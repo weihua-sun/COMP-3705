@@ -1,6 +1,6 @@
 import angular from 'angular';
 const ngRoute = require('angular-route');
-import routing from './userDetail.routes';
+import routing from './recipesDetail.routes';
 
 export class RecipeDetailController {
   /*@ngInject*/

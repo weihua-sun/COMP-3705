@@ -8,25 +8,27 @@ export function RecipeService($resource) {
       return $resource('/api/recipes/').query().$promise;
     },
     getRecipeById(recipeId) {
+      //console.log(recipeId)
       return $resource('/api/recipes/:id').get({id: recipeId}).$promise;
     },
-
     updateRecipe(recipe) {
+      //console.log(recipe._id)
       let updateResource = $resource('/api/recipes/:id', null,
         {
           update: { method: 'PUT' }
         });
+      //console.log(recipe._id)
       return updateResource.update({ id: recipe._id }, recipe).$promise;
     },
-    createUser(user) {
-      return $resource('/api/users').save(user).$promise;
+    createRecipe(recipe) {
+      console.log(recipe)
+      return $resource('/api/recipes').save(recipe).$promise;
     },
 
-    deleteRecipe(userId) {
-      return $resource('api/users/:id').delete({id: userId}).$promise;
+    deleteRecipe(recipeId) {
+      return $resource('api/recipes/:Id').delete({id: recipeId}).$promise;
     }
-
-
   };
   return Recipe;
 }
+

@@ -3,41 +3,41 @@
     <div class="modal-header">
       <button type="button" ng-click="updateRecipeController.cancel()" class="close"><span
         aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-      <h4 id="myModalLabel" class="modal-title">Updating Recipe {{ updateRecipeController.Recipe._id }}</h4>
+      <h4 id="myModalLabel" class="modal-title">Updating Recipe {{ updateRecipeController.recipe.id }}</h4>
     </div>
     <div class="modal-body">
       <div role="alert" ng-show="updateRecipeController.formError" class="alert alert-danger">{{ updateRecipeController.formError }}</div>
       <div role="alert" ng-show="updateRecipeController.formInfo" class="alert alert-info">{{ updateRecipeController.formInfo }}</div>
       <div class="form-group">
-        <label for="name" class="col-xs-2 col-sm-2 control-label">Nmae</label>
+        <label for="name" class="col-xs-2 col-sm-2 control-label">Name</label>
         <div class="col-xs-10 col-sm-10">
-          <input id="name" name="name" required="required" ng-model="updateRecipeController.Recipe.name" class="form-control"/>
+          <input id="name" name="name" required="required" ng-model="updateRecipeController.recipe.name" class="form-control"/>
         </div>
       </div>
 
       <div class="form-group">
         <label for="description" class="col-xs-2 col-sm-2 control-label">Description</label>
         <div class="col-xs-10 col-sm-10">
-          <input id="description" name="description" required="required" ng-model="updateRecipeController.Recipe.description" class="form-control"/>
+          <input id="description" name="description" required="required" ng-model="updateRecipeController.recipe.description" class="form-control"/>
         </div>
       </div>
       <div class="form-group">
         <label for="image" class="col-xs-2 col-sm-2 control-label">Image</label>
         <div class="col-xs-10 col-sm-10">
-          <input id="image" name="image" required="required" ng-model="updateRecipeController.Recipe.image" class="form-control"/>
+          <input id="image" name="image" required="required" ng-model="updateRecipeController.recipe.image" class="form-control"/>
         </div>
       </div>
 
       <div class="form-group">
         <label for="prepTime" class="col-xs-2 col-sm-2 control-label">Prep Time</label>
         <div class="col-xs-10 col-sm-10">
-          <input id="prepTime" name="prepTime" required="required" ng-model="updateRecipeController.Recipe.prepTime" class="form-control"/>
+          <input id="prepTime" name="prepTime" required="required" ng-model="updateRecipeController.recipe.prepTime" class="form-control"/>
         </div>
       </div>
       <div class="form-group">
         <label for="cookTime" class="col-xs-2 col-sm-2 control-label">Cook Time</label>
         <div class="col-xs-10 col-sm-10">
-          <input id="cookTime" name="cookTime" required="required" ng-model="updateRecipeController.Recipe.cookTime" class="form-control"/>
+          <input id="cookTime" name="cookTime" required="required" ng-model="updateRecipeController.recipe.cookTime" class="form-control"/>
         </div>
       </div>
 <!--
